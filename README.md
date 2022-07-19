@@ -1,11 +1,1 @@
-.idea/*
-
-target
-
-.class
-
-.jar
-.war
-.ear
-
-src/main/java/com/tebr5923/Main.java
+is an application for adding, storing and marking the completion of orders
