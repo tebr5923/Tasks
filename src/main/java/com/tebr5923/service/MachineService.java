@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MachineService {
-    Optional<Machine> getById(Long id);
+    Optional<Machine> findById(Long id);
 
-    List<Machine> getAll();
+    List<Machine> findAll();
 
     void save(Machine model);
 
