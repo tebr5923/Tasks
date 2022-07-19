@@ -23,7 +23,7 @@ public class MachineServiceImpl implements MachineService {
 
     @Override
     public List<Machine> findAll() {
-        List<Machine> machines = new ArrayList();
+        List<Machine> machines = new ArrayList<>();
         Iterator<Machine> iterator = machineRepository.findAll().iterator();
         if (iterator.hasNext()) {
             machines.add(iterator.next());
