@@ -1,16 +1,27 @@
 package com.tebr5923.domain.model;
 
-import com.tebr5923.domain.Dimensions;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "machins")
 public class Machine {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "name")
     private String name;
 
-    private Dimensions dimensions;
+    @Column(name = "dimensions")
+    private String dimensions;
 
     public long getId() {
         return id;
@@ -28,11 +39,11 @@ public class Machine {
         this.name = name;
     }
 
-    public Dimensions getDimensions() {
+    public String getDimensions() {
         return dimensions;
     }
 
-    public void setDimensions(Dimensions dimensions) {
+    public void setDimensions(String dimensions) {
         this.dimensions = dimensions;
     }
 
@@ -54,7 +65,7 @@ public class Machine {
         return "Machine{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", dimensions=" + dimensions +
+                ", dimensions='" + dimensions + '\'' +
                 '}';
     }
 }
