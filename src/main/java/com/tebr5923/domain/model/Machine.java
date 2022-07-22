@@ -1,11 +1,14 @@
 package com.tebr5923.domain.model;
 
 
+import com.tebr5923.converter.DimensionsConverter;
+import com.tebr5923.domain.Dimensions;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +20,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "machines")
+@Table(name = "machines", schema = "public")
 public class Machine {
 
     @Id
@@ -27,8 +30,9 @@ public class Machine {
     @Column(name = "name")
     private String name;
 
+    @Convert(converter = DimensionsConverter.class)
     @Column(name = "dimensions")
-    private String dimensions;
+    private Dimensions dimensions;
 
     public long getId() {
         return id;
@@ -46,21 +50,12 @@ public class Machine {
         this.name = name;
     }
 
-    public String getDimensions() {
+    public Dimensions getDimensions() {
         return dimensions;
     }
 
-    public void setDimensions(String dimensions) {
+    public void setDimensions(Dimensions dimensions) {
         this.dimensions = dimensions;
-    }
-
-    @Override
-    public String toString() {
-        return "Machine{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dimensions='" + dimensions + '\'' +
-                '}';
     }
 
     @Override
@@ -74,5 +69,14 @@ public class Machine {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, dimensions);
+    }
+
+    @Override
+    public String toString() {
+        return "Machine{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", " + dimensions +
+                '}';
     }
 }
