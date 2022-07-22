@@ -55,9 +55,9 @@ public class Dimensions {
     @Override
     public String toString() {
         return "Dimensions{" +
-                "x=" + x +
-                ", y=" + y +
-                ", z=" + z +
+                x +
+                "X" + y +
+                "X" + z +
                 '}';
     }
 }
