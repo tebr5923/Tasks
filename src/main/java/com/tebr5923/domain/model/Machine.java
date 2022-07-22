@@ -1,6 +1,10 @@
 package com.tebr5923.domain.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,12 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "machins")
+@Table(name = "machines")
 public class Machine {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "name")
@@ -48,6 +55,15 @@ public class Machine {
     }
 
     @Override
+    public String toString() {
+        return "Machine{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dimensions='" + dimensions + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -58,14 +74,5 @@ public class Machine {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, dimensions);
-    }
-
-    @Override
-    public String toString() {
-        return "Machine{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dimensions='" + dimensions + '\'' +
-                '}';
     }
 }
